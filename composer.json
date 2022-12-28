@@ -1,0 +1,11 @@
+{
+    "name": "foo/coding-standard",
+    "autoload": {
+        "psr-4": {
+            "Foo\\CodingStandard\\": "src/"
+        }
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.13"
+    }
+}

@@ -1,0 +1,22 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+    check:
+        name: Check
+        runs-on: ubuntu-latest
+        if: github.ref == 'refs/heads/main'
+        steps:
+        - uses: actions/checkout@v1
+        - name: Setup PHP with composer v2
+          uses: shivammathur/setup-php@v2
+          with:
+              php-version: '8.1'
+              tools: composer
+        -
+          name: Install dependencies
+          run: composer install --prefer-dist
+        -
+          name: CI checks
+          run: vendor/bin/php-cs-fixer fix --dry-run --diff
